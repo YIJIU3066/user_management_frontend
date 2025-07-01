@@ -4,7 +4,7 @@ import { formatPhoneNumber } from "../utils/validation";
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const UserCard = ({ user, onEdit }) => {
-  const { id, name, gender, job, birthday, phone, imgSrc } = user;
+  const { name, gender, job, birthday, phone, imgSrc } = user;
 
   const handleClick = () => {
     if (onEdit) {

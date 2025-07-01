@@ -37,7 +37,7 @@ const EditUser = ({ user, onClose, onExit, onUserEdited }) => {
         gender: user.gender,
         birthday: user.birthday || "",
         job: user.job,
-        phone: formatPhoneNumber(user.phone) || "",
+        phone: user.phone || "",
         imgFile: null,
         imgSrc: user.imgSrc ? `${API_BASE_URL}${user.imgSrc}` : "",
       });
@@ -348,7 +348,14 @@ const EditUser = ({ user, onClose, onExit, onUserEdited }) => {
             <input
               type="text"
               name="phone"
-              value={formatPhoneNumber(form.phone)}
+              value={form.phone}
+              // value={formatPhoneNumber(form.phone)}
+              onBlur={(e) =>
+                setForm((prev) => ({
+                  ...prev,
+                  phone: formatPhoneNumber(e.target.value),
+                }))
+              }
               onChange={handleChange}
               required
             />

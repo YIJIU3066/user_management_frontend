@@ -287,7 +287,14 @@ const AddUser = ({ onClose, onExit, onUserAdded }) => {
             <input
               type="text"
               name="phone"
-              value={formatPhoneNumber(form.phone)}
+              // value={formatPhoneNumber(form.phone)}
+              value={form.phone}
+              onBlur={(e) =>
+                setForm((prev) => ({
+                  ...prev,
+                  phone: formatPhoneNumber(e.target.value),
+                }))
+              }
               onChange={handleChange}
               required
             />

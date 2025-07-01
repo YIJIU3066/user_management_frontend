@@ -45,7 +45,7 @@ export const validateForm = (formData) => {
       errors.phone = "電話號碼不能超過 15 位數字";
     }
 
-    if (!/^[\d\s\-\(\)\+]+$/.test(formData.phone)) {
+    if (!/^[\d\s\-()+]+$/.test(formData.phone)) {
       errors.phone = "電話號碼只能包含數字、空格、-、()、+";
     }
   }
@@ -59,7 +59,9 @@ export const validateForm = (formData) => {
 // 電話號碼格式化
 export const formatPhoneNumber = (phone) => {
   // 移除所有非數字字元
+  console.log("phone", phone);
   const numbers = phone.replace(/[^\d]/g, "");
+  console.log("numbers", numbers);
   if (!numbers) return "";
 
   if (numbers.length <= 4) {
