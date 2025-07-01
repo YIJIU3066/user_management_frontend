@@ -39,7 +39,7 @@ const EditUser = ({ user, onClose, onExit, onUserEdited }) => {
         job: user.job,
         phone: user.phone || "",
         imgFile: null,
-        imgSrc: user.imgSrc ? `${API_BASE_URL}${user.imgSrc}` : "",
+        imgSrc: user.imgSrc || "",
       });
     }
   }, [user]);
@@ -155,6 +155,10 @@ const EditUser = ({ user, onClose, onExit, onUserEdited }) => {
     setForm((prev) => ({ ...prev, imgFile: null, imgSrc: "" }));
   };
 
+  // useEffect(() => {
+  //   console.log(form);
+  // });
+
   // 更新使用者
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -183,9 +187,11 @@ const EditUser = ({ user, onClose, onExit, onUserEdited }) => {
       formData.append("phone", form.phone);
 
       if (form.imgFile) {
-        formData.append("imgSrc", form.imgFile);
+        formData.append("imgSrc", form.imgFile); // 更換新圖片
+      } else if (form.imgFile === null && form.imgSrc) {
+        formData.append("imgSrc", form.imgSrc); // 保留原有圖片
       } else {
-        formData.append("imgSrc", "");
+        formData.append("imgSrc", ""); // 移除圖片
       }
 
       const response = await axios.put(`/users/${user.id}`, formData, {
@@ -315,7 +321,6 @@ const EditUser = ({ user, onClose, onExit, onUserEdited }) => {
               name="birthday"
               type="date"
               min="1900-01-01"
-              // max={new Date().toISOString().split("T")[0]}
               value={form.birthday}
               onChange={handleChange}
               required
@@ -371,7 +376,14 @@ const EditUser = ({ user, onClose, onExit, onUserEdited }) => {
               {form.imgSrc ? (
                 // 有圖片時顯示預覽
                 <div className="img-preview">
-                  <img src={form.imgSrc} alt="預覽" />
+                  <img
+                    src={
+                      form.imgSrc.startsWith("blob:")
+                        ? form.imgSrc
+                        : `${API_BASE_URL}${form.imgSrc}`
+                    }
+                    alt="預覽"
+                  />
                   <div className="img-actions">
                     <label className="change-img-btn">
                       <span>更換</span>
