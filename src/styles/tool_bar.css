@@ -1,0 +1,107 @@
+.tool-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 32px 0 40px 0;
+  gap: 16px;
+  width: 80%;
+  max-width: 1100px;
+  /* background-color: blue; */
+}
+
+.tool-bar-left {
+  display: flex;
+  gap: 0;
+}
+.tool-bar-left button {
+  padding: 8px 28px;
+  border: 1px solid #aaa;
+  background: #fff;
+  color: #333;
+  font-size: 1.1rem;
+  border-radius: 6px 0 0 6px;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.tool-bar-left button:last-child {
+  border-radius: 0 6px 6px 0;
+}
+
+.tool-bar-left button.active {
+  background: #333;
+  color: #fff;
+}
+
+.tool-bar-center {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar {
+  width: 320px;
+  padding: 8px 36px 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1.1rem;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+.search-icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+}
+
+.tool-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.add-btn {
+  font-size: 1.6rem;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 8px;
+}
+.page-btn {
+  background: #eee;
+  border: none;
+  font-size: 1.2rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #555;
+}
+.page-btn:disabled {
+  color: #bbb;
+  cursor: not-allowed;
+}
+.page-num {
+  font-size: 1.2rem;
+  margin: 0 4px;
+  min-width: 24px;
+  text-align: center;
+}
