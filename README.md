@@ -17,3 +17,9 @@ React 製作的使用者管理介面
    ```
 
 | default port: 3000
+
+### Page
+![grid_view](./public/pic1.png)
+![table_view](./public/pic4.png)
+![add_user](./public/pic2.png)
+![edit_user](./public/pic3.png)
